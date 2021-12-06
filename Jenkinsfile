@@ -3,12 +3,12 @@
 pipeline {
     agent any
 
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-        disableConcurrentBuilds()
-        timeout(time: 1, unit: 'HOURS')
-        timestamps()
-    }
+//     options {
+//         buildDiscarder(logRotator(numToKeepStr: '10'))
+//         disableConcurrentBuilds()
+//         timeout(time: 1, unit: 'HOURS')
+//         timestamps()
+//     }
 
     tools {
         jdk 'openjdk-11'
@@ -19,7 +19,7 @@ pipeline {
     environment {
         POM_VERSION = getVersion()
         JAR_NAME = getJarName()
-        AWS_ECR_REGION = 'eu-west-1'
+        AWS_ECR_REGION = 'us-west-1'
         AWS_ECS_SERVICE = 'ch-dev-user-api-service'
         AWS_ECS_TASK_DEFINITION = 'ch-dev-user-api-taskdefinition'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
